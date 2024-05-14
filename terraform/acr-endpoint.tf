@@ -14,6 +14,6 @@ resource "azurerm_private_endpoint" "acr_private_endpoint" {
 
   private_dns_zone_group {
     name                 = "acr-pipeline-group"
-    private_dns_zone_ids = [azurerm_private_dns_zone.azurecr_io.id]
+    private_dns_zone_ids = [azurerm_private_dns_zone.azurecr_io[0].id]
   }
 }
