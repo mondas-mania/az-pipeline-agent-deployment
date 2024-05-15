@@ -1,6 +1,6 @@
-# Terraform Azure Pipeline Agent Deployment
+# Terraform ACR Deployment
 
-A simple sandbox test for deploying an Azure Pipelines agent on Container Instances. Uses existing networking.
+A simple sandbox test for deploying an Azure Container Registry with private network connectivity. Uses existing networking.
 
 ## Caveats
 
