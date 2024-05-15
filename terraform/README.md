@@ -2,13 +2,24 @@
 
 A simple sandbox test for deploying an Azure Pipelines agent on Container Instances. Uses existing networking.
 
+## Caveats
+
+- The sandpit account I have access to in development does not allow me the roleAssignments/write permissions so I cannot use a managed user identity for ACR encryption.
+
 ## Example Variables File
 
 ```hcl
-resource_group_name = "Sandbox_RG"
+resource_group_name   = "Sandbox_RG"
+vnet_name             = "internal-vnet-1"
+endpoint_subnet_names = ["private-subnet-0"]
 
-enable_acr        = true
+enable_acr = true
+
 acr_registry_name = "SandpitPipelineAgent"
+allow_cidr_ranges = [
+  "1.2.3.4/32",
+  "10.0.0.0/8"
+]
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
