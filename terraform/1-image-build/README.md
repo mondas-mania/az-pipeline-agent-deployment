@@ -9,6 +9,8 @@ Code and files taken and adapted from Microsoft official documentation ([x](http
 
 These commands can be run directly from this current directory. Azure Pipelines alternatives to these commands can be found at [Pipeline stages](#azure-pipeline-stages).
 
+In order to build the docker image you need to be running on a Windows Docker installation, either on a Windows device or a Windows VM.
+
 ### Build the image
 
 ```sh
