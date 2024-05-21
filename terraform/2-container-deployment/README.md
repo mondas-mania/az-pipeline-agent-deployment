@@ -34,17 +34,21 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurerm_container_app_environment.pipeline_agent_environment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_app_environment) | resource |
+| [azurerm_log_analytics_workspace.log_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace) | resource |
 | [azurerm_resource_group.resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
+| [azurerm_subnet.subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subnet) | data source |
+| [azurerm_virtual_network.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group to deploy to. | `string` | n/a | yes |
+| <a name="input_subnet_name"></a> [subnet\_name](#input\_subnet\_name) | The name of the Subnet in `vnet_name` to deploy the Container Apps solution into. | `string` | n/a | yes |
+| <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | The name of the VNet to deploy the Container Apps solution into. | `string` | n/a | yes |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_placeholder"></a> [placeholder](#output\_placeholder) | A placeholder to prevent TFLint issues |
+No outputs.
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
