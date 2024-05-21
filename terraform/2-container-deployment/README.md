@@ -19,12 +19,14 @@ resource_group_name = "Sandbox_RG"
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | ~> 3.0 |
 
 ## Modules
 
@@ -35,7 +37,13 @@ No modules.
 | Name | Type |
 |------|------|
 | [azurerm_container_app_environment.pipeline_agent_environment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_app_environment) | resource |
+| [azurerm_container_group.pipeline_agent](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_group) | resource |
+| [azurerm_key_vault.agent_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault) | resource |
+| [azurerm_key_vault_secret.pat_token](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret) | resource |
 | [azurerm_log_analytics_workspace.log_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace) | resource |
+| [random_string.key_vault_random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
+| [azurerm_container_registry.acr_registry](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/container_registry) | data source |
 | [azurerm_resource_group.resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 | [azurerm_subnet.subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subnet) | data source |
 | [azurerm_virtual_network.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | data source |
@@ -44,8 +52,16 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_acr_image_name"></a> [acr\_image\_name](#input\_acr\_image\_name) | The name of the image to pull from `acr_registry_name`. | `string` | `"azp-agent"` | no |
+| <a name="input_acr_image_tag"></a> [acr\_image\_tag](#input\_acr\_image\_tag) | The name of the tag for the image `acr_image_name` in `acr_registry_name`. | `string` | `"windows"` | no |
+| <a name="input_acr_registry_name"></a> [acr\_registry\_name](#input\_acr\_registry\_name) | The name of the ACR Registry to pull from. | `string` | n/a | yes |
+| <a name="input_azure_devops_agent_pool"></a> [azure\_devops\_agent\_pool](#input\_azure\_devops\_agent\_pool) | The name of an existing Pipeline Agent Pool in your DevOps organisation. | `string` | `"Default"` | no |
+| <a name="input_azure_devops_url"></a> [azure\_devops\_url](#input\_azure\_devops\_url) | The URL of your Azure DevOps instance. This will typically be https://dev.azure.com/{instance} | `string` | n/a | yes |
+| <a name="input_enable_container_apps"></a> [enable\_container\_apps](#input\_enable\_container\_apps) | Boolean to determine whether to deploy the Container Apps setup. Defaults to false. | `bool` | `false` | no |
+| <a name="input_enable_container_instance"></a> [enable\_container\_instance](#input\_enable\_container\_instance) | Boolean to determine whether to deploy the Container Instance setup. Defaults to false. | `bool` | `false` | no |
+| <a name="input_pat_token"></a> [pat\_token](#input\_pat\_token) | The PAT Token for the Pipeline Agent to run with. This needs Agent Pool (Read, Manage) permissions.<br>  This will be stored in plaintext in the state. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group to deploy to. | `string` | n/a | yes |
-| <a name="input_subnet_name"></a> [subnet\_name](#input\_subnet\_name) | The name of the Subnet in `vnet_name` to deploy the Container Apps solution into. | `string` | n/a | yes |
+| <a name="input_subnet_name"></a> [subnet\_name](#input\_subnet\_name) | The name of the Subnet in `vnet_name` to deploy the Container Apps solution into.<br>  This subnet must be delegated to `Microsoft.ContainerInstance/containerGroups`. | `string` | n/a | yes |
 | <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | The name of the VNet to deploy the Container Apps solution into. | `string` | n/a | yes |
 
 ## Outputs

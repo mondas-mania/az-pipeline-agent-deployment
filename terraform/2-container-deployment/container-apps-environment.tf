@@ -1,4 +1,5 @@
 resource "azurerm_container_app_environment" "pipeline_agent_environment" {
+  for_each                   = var.enable_container_apps ? toset(["1"]) : []
   name                       = "pipeline-agent-environment"
   location                   = data.azurerm_resource_group.resource_group.location
   resource_group_name        = data.azurerm_resource_group.resource_group.name
@@ -11,5 +12,7 @@ resource "azurerm_container_app_environment" "pipeline_agent_environment" {
   workload_profile {
     name                  = "Consumption"
     workload_profile_type = "Consumption"
+    maximum_count         = 1
+    minimum_count         = 0
   }
 }
