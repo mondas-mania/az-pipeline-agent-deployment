@@ -25,11 +25,11 @@ variable "pat_token" {
   sensitive   = true
 }
 
-variable "enable_container_apps" {
-  description = "Boolean to determine whether to deploy the Container Apps setup. Defaults to false."
-  type        = bool
-  default     = false
-}
+# variable "enable_container_apps" {
+#   description = "Boolean to determine whether to deploy the Container Apps setup. Defaults to false."
+#   type        = bool
+#   default     = false
+# }
 
 
 variable "number_of_agents" {

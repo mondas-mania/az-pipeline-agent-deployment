@@ -58,11 +58,9 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_container_app_environment.pipeline_agent_environment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_app_environment) | resource |
 | [azurerm_container_group.pipeline_agent](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_group) | resource |
 | [azurerm_key_vault.agent_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault) | resource |
 | [azurerm_key_vault_secret.pat_token](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret) | resource |
-| [azurerm_log_analytics_workspace.log_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace) | resource |
 | [random_string.key_vault_random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 | [azurerm_container_registry.acr_registry](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/container_registry) | data source |
@@ -79,7 +77,6 @@ No modules.
 | <a name="input_acr_registry_name"></a> [acr\_registry\_name](#input\_acr\_registry\_name) | The name of the ACR Registry to pull from. | `string` | n/a | yes |
 | <a name="input_azure_devops_agent_pool"></a> [azure\_devops\_agent\_pool](#input\_azure\_devops\_agent\_pool) | The name of an existing Pipeline Agent Pool in your DevOps organisation. | `string` | `"Default"` | no |
 | <a name="input_azure_devops_url"></a> [azure\_devops\_url](#input\_azure\_devops\_url) | The URL of your Azure DevOps instance. This will typically be https://dev.azure.com/{instance} | `string` | n/a | yes |
-| <a name="input_enable_container_apps"></a> [enable\_container\_apps](#input\_enable\_container\_apps) | Boolean to determine whether to deploy the Container Apps setup. Defaults to false. | `bool` | `false` | no |
 | <a name="input_number_of_agents"></a> [number\_of\_agents](#input\_number\_of\_agents) | The number of agents to deploy. Each agent will constitute its own Container Instance deployment.<br>  Set to 0 to disable Container Instance deployments. | `number` | `1` | no |
 | <a name="input_pat_token"></a> [pat\_token](#input\_pat\_token) | The PAT Token for the Pipeline Agent to run with. This needs Agent Pool (Read, Manage) permissions.<br>  This will be stored in plaintext in the state. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group to deploy to. | `string` | n/a | yes |
