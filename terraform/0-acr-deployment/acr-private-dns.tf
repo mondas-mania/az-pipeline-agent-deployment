@@ -11,5 +11,5 @@ resource "azurerm_private_dns_zone_virtual_network_link" "azurecr_io_vnet_link" 
   name                  = "azurecr_io_vnet_link"
   resource_group_name   = data.azurerm_resource_group.resource_group.name
   private_dns_zone_name = azurerm_private_dns_zone.azurecr_io[0].name
-  virtual_network_id    = data.azurerm_virtual_network.vnet.id
+  virtual_network_id    = data.azurerm_virtual_network.vnet[0].id
 }

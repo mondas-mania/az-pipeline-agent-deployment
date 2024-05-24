@@ -8,12 +8,15 @@ A simple sandbox test for deploying an Azure Container Registry with private net
 
 ## Example Variables File
 
+This will deploy an Azure Container Registry called SandpitPipelineAgent along with a private endpoint (and associated private DNS) in the specified Subnet(s) of the specified VNet.
+
 ```hcl
 resource_group_name   = "Sandbox_RG"
 vnet_name             = "internal-vnet-1"
 endpoint_subnet_names = ["private-subnet-0"]
 
-enable_acr = true
+enable_acr          = true
+enable_acr_endpoint = true
 
 acr_registry_name = "SandpitPipelineAgent"
 allow_cidr_ranges = [
