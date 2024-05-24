@@ -22,6 +22,7 @@ variable "pat_token" {
   This will be stored in plaintext in the state.
   EOT
   type        = string
+  sensitive   = true
 }
 
 variable "enable_container_apps" {
