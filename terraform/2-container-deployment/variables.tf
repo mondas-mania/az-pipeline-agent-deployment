@@ -31,10 +31,14 @@ variable "enable_container_apps" {
   default     = false
 }
 
-variable "enable_container_instance" {
-  description = "Boolean to determine whether to deploy the Container Instance setup. Defaults to false."
-  type        = bool
-  default     = false
+
+variable "number_of_agents" {
+  description = <<EOT
+  The number of agents to deploy. Each agent will constitute its own Container Instance deployment.
+  Set to 0 to disable Container Instance deployments.
+  EOT
+  type        = number
+  default     = 1
 }
 
 variable "acr_registry_name" {
