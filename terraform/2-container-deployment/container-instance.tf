@@ -1,6 +1,6 @@
 resource "azurerm_container_group" "pipeline_agent" {
-  for_each            = var.enable_container_instance ? toset(["1"]) : []
-  name                = "pipelineagentcontainer"
+  for_each            = toset([for num in range(var.number_of_agents) : tostring(num)])
+  name                = "pipelineagentcontainer-${each.key}"
   location            = data.azurerm_resource_group.resource_group.location
   resource_group_name = data.azurerm_resource_group.resource_group.name
   ip_address_type     = "Private"
