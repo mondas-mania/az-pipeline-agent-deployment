@@ -19,6 +19,12 @@ variable "enable_acr" {
   default     = true
 }
 
+variable "enable_acr_endpoint" {
+  description = "Deploys the Azure Container Registry Endpoint for the ACI to use."
+  type        = bool
+  default     = true
+}
+
 variable "acr_registry_name" {
   description = "A globally unique name for your Container Registry."
   type        = string

@@ -4,7 +4,8 @@ resource "azurerm_container_registry" "acr" {
   resource_group_name = data.azurerm_resource_group.resource_group.name
   location            = data.azurerm_resource_group.resource_group.location
   sku                 = "Premium" # Required for private access
-  admin_enabled       = false
+
+  admin_enabled = true # Allows for login from VM without managed identities etc.
 
   public_network_access_enabled = true
   data_endpoint_enabled         = false

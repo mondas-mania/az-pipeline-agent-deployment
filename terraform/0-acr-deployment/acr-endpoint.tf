@@ -1,5 +1,5 @@
 resource "azurerm_private_endpoint" "acr_private_endpoint" {
-  for_each            = var.enable_acr ? data.azurerm_subnet.endpoint_subnets : {}
+  for_each            = var.enable_acr && var.enable_acr_endpoint ? data.azurerm_subnet.endpoint_subnets : {}
   name                = "acr-pipeline-agent-endpoint"
   location            = data.azurerm_resource_group.resource_group.location
   resource_group_name = data.azurerm_resource_group.resource_group.name
