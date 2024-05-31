@@ -16,6 +16,7 @@ data "azurerm_subnet" "subnet" {
 }
 
 data "azurerm_container_registry" "acr_registry" {
+  count               = var.number_of_agents > 0 ? 1 : 0
   resource_group_name = data.azurerm_resource_group.resource_group.name
   name                = var.acr_registry_name
 }

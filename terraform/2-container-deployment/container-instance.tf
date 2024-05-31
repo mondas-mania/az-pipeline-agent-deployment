@@ -9,7 +9,7 @@ resource "azurerm_container_group" "pipeline_agent" {
 
   container {
     name   = "pipelineagent"
-    image  = "${data.azurerm_container_registry.acr_registry.login_server}/${var.acr_image_name}:${var.acr_image_tag}"
+    image  = "${data.azurerm_container_registry.acr_registry[0].login_server}/${var.acr_image_name}:${var.acr_image_tag}"
     cpu    = "0.5"
     memory = "1.5"
 
@@ -34,8 +34,8 @@ resource "azurerm_container_group" "pipeline_agent" {
   }
 
   image_registry_credential {
-    username = data.azurerm_container_registry.acr_registry.admin_username
-    password = data.azurerm_container_registry.acr_registry.admin_password
-    server   = data.azurerm_container_registry.acr_registry.login_server
+    username = data.azurerm_container_registry.acr_registry[0].admin_username
+    password = data.azurerm_container_registry.acr_registry[0].admin_password
+    server   = data.azurerm_container_registry.acr_registry[0].login_server
   }
 }
